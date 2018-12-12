@@ -1,0 +1,8 @@
+<!--
+ - Created by Igor Litvinyuk on 10.12.2018.
+ -->
+
+<aura:component implements="flexipage:availableForAllPageTypes,lightning:actionOverride">
+    <lightning:overlayLibrary aura:id="overlayLib"/>
+    <lightning:button name="modal" label="Delete Options" onclick="{!c.handleShowModal}"/>
+</aura:component>

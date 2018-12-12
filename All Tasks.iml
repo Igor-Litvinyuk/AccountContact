@@ -47,6 +47,10 @@
                             <option name="name" value="ContactHandler" />
                             <option name="selected" value="true" />
                           </MetadataEntry>
+                          <MetadataEntry>
+                            <option name="name" value="AccountContactController" />
+                            <option name="selected" value="true" />
+                          </MetadataEntry>
                         </list>
                       </option>
                       <option name="name" value="ApexClass" />
@@ -135,6 +139,18 @@
                           </MetadataEntry>
                           <MetadataEntry>
                             <option name="name" value="DeletePopup" />
+                            <option name="selected" value="true" />
+                          </MetadataEntry>
+                          <MetadataEntry>
+                            <option name="name" value="DeleteOptions" />
+                            <option name="selected" value="true" />
+                          </MetadataEntry>
+                          <MetadataEntry>
+                            <option name="name" value="AccountContactsItems" />
+                            <option name="selected" value="true" />
+                          </MetadataEntry>
+                          <MetadataEntry>
+                            <option name="name" value="DeleteOptionsDetails" />
                             <option name="selected" value="true" />
                           </MetadataEntry>
                         </list>
