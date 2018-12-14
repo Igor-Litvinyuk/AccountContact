@@ -5,7 +5,7 @@
 <aura:component implements="forceCommunity:searchInterface" controller="AccountContactController">
 
     <lightning:overlayLibrary aura:id="overlayLib"/>
-    <lightning:notificationsLibrary aura:id="notifLib"/>
+    <lightning:notificationsLibrary aura:id="notifyLib"/>
     <aura:attribute name='isPrimaryTrue' type='Boolean' default='false'/>
     <aura:attribute name='isPrimaryFalse' type='Boolean' default='false'/>
     <aura:attribute name='all' type='Boolean' default='false'/>

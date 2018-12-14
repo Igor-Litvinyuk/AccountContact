@@ -18,16 +18,17 @@ public class AccountContactController {
     }
 
     @AuraEnabled
-    public static void deleteSpecificAccountContacts(Boolean isPrimaryTrue, Boolean isPrimaryFalse, Boolean all) {
-        List<AccountContact__c> accountContacts = new List<AccountContact__c>();
+    public static Integer deleteSpecificAccountContacts(Boolean isPrimaryTrue, Boolean isPrimaryFalse, Boolean all) {
+        List<AccountContact__c> accountContacts;
         if (all) {
             accountContacts = getAllAccountContacts();
         } else if (isPrimaryTrue) {
-            accountContacts = getSpecificAccountContacts(isPrimaryTrue);
-        } else if (isPrimaryFalse){
-            accountContacts = getSpecificAccountContacts(isPrimaryFalse);
+            accountContacts = getSpecificAccountContacts(true);
+        } else if (isPrimaryFalse) {
+            accountContacts = getSpecificAccountContacts(false);
         }
         delete accountContacts;
+        return accountContacts.size();
     }
 
     public static List<AccountContact__c> getSpecificAccountContacts(Boolean isPrimary) {

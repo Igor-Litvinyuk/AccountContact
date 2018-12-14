@@ -23,8 +23,11 @@
                 <td> {!accountContact.Account__r.Name}</td>
                 <td> {!accountContact.Contact__r.Name}</td>
                 <td> {!accountContact.isPrimary__c}</td>
-                <td> <lightning:formattedDateTime value="{!accountContact.CreatedDate}" year="numeric" month="numeric" day="numeric" hour="2-digit"
-                                                  minute="2-digit" second="2-digit" timeZoneName="short" hour12="true"/></td>
+                <td>
+                    <lightning:formattedDateTime value="{!accountContact.CreatedDate}" year="numeric" month="numeric"
+                                                 day="numeric" hour="2-digit"
+                                                 minute="2-digit" second="2-digit" timeZoneName="short" hour12="true"/>
+                </td>
             </tr>
         </aura:iteration>
         </tbody>
