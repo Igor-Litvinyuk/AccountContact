@@ -42,7 +42,7 @@
         component.find('notifyLib').showNotice({
             "variant": "warning",
             "header": "Warning!",
-            "message": "No data to delete!"
+            "message": message
         });
     }
 });
