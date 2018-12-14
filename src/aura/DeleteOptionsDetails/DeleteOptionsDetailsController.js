@@ -18,38 +18,6 @@
     },
 
     onDelete: function (component, event, helper) {
-        let isPrimaryTrue = component.get("v.isPrimaryTrue");
-        let isPrimaryFalse = component.get("v.isPrimaryFalse");
-        let all = component.get("v.all");
-        let action = component.get("c.deleteSpecificAccountContacts");
-        action.setParams({
-            "isPrimaryTrue": isPrimaryTrue,
-            "isPrimaryFalse": isPrimaryFalse,
-            "all": all
-        });
-        action.setCallback(this, function (response) {
-            let state = response.getState();
-            if (state === "SUCCESS") {
-                let count = response.getReturnValue();
-                if (count !== 0) {
-                    component.find('notifyLib').showNotice({
-                        "variant": "info",
-                        "header": "Successful!",
-                        "message": count + " AccountContacts were deleted!"
-                    });
-                    $A.get('e.force:refreshView').fire();
-                } else {
-                    component.find('notifyLib').showNotice({
-                        "variant": "warning",
-                        "header": "No data!",
-                        "message": "No data to delete!"
-                    });
-                }
-                component.find("overlayLib").notifyClose();
-            } else {
-                console.log("Failed with state: " + state);
-            }
-        });
-        $A.enqueueAction(action);
+       helper.deleteAccountContacts(component);
     }
 });
