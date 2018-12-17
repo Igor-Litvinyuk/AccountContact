@@ -5,6 +5,7 @@
 <aura:component implements="flexipage:availableForAllPageTypes" controller="AccountContactController">
     <aura:handler name="init" action="{!c.doInit}" value="{!this}"/>
     <aura:attribute name="accountContacts" type="AccountContact__c[]"/>
+    <aura:attribute name="path" type="String" default="/one/one.app?#/sObject/"/>
 
     <table class="slds-table slds-table_bordered slds-table_cell-buffer">
         <thead>
@@ -20,9 +21,9 @@
         <tbody>
         <aura:iteration items="{!v.accountContacts}" var="accountContact">
             <tr>
-                <td> <a href="{!'/one/one.app?#/sObject/'+ accountContact.Id}">{!accountContact.Name}</a></td>
-                <td> <a href="{!'/one/one.app?#/sObject/'+ accountContact.Account__c}">{!accountContact.Account__r.Name}</a></td>
-                <td> <a href="{!'/one/one.app?#/sObject/'+ accountContact.Contact__c}">{!accountContact.Contact__r.Name}</a></td>
+                <td> <a href="{!v.path + accountContact.Id}">{!accountContact.Name}</a></td>
+                <td> <a href="{!v.path + accountContact.Account__c}">{!accountContact.Account__r.Name}</a></td>
+                <td> <a href="{!v.path + accountContact.Contact__c}">{!accountContact.Contact__r.Name}</a></td>
                 <td> {!accountContact.isPrimary__c}</td>
                 <td> {!accountContact.Active_Days__c}</td>
                 <td>
