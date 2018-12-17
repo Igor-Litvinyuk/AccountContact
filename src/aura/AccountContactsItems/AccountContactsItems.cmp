@@ -13,6 +13,7 @@
             <th scope="col">Account</th>
             <th scope="col">Contact</th>
             <th scope="col">isPrimary</th>
+            <th scope="col">Active Days</th>
             <th scope="col">Created Date</th>
         </tr>
         </thead>
@@ -23,6 +24,7 @@
                 <td> {!accountContact.Account__r.Name}</td>
                 <td> {!accountContact.Contact__r.Name}</td>
                 <td> {!accountContact.isPrimary__c}</td>
+                <td> {!accountContact.Active_Days__c}</td>
                 <td>
                     <lightning:formattedDateTime value="{!accountContact.CreatedDate}" year="numeric" month="numeric"
                                                  day="numeric" hour="2-digit"

@@ -12,6 +12,7 @@ public class AccountContactController {
                         , Account__r.Name
                         , Contact__r.Name
                         , isPrimary__c
+                        , Active_Days__c
                         , CreatedDate
                 FROM AccountContact__c
         ];
@@ -19,13 +20,15 @@ public class AccountContactController {
 
     @AuraEnabled
     public static Integer deleteSpecificAccountContacts(Boolean isPrimaryTrue, Boolean isPrimaryFalse, Boolean all) {
-        List<AccountContact__c> accountContacts;
+        List<AccountContact__c> accountContacts = new List<AccountContact__c>();
         if (all) {
-            accountContacts = getAllAccountContacts();
-        } else if (isPrimaryTrue) {
-            accountContacts = getSpecificAccountContacts(true);
-        } else if (isPrimaryFalse) {
-            accountContacts = getSpecificAccountContacts(false);
+            accountContacts.addAll(getAllAccountContacts());
+        } else {
+            if (isPrimaryTrue) {
+                accountContacts.addAll(getSpecificAccountContacts(true));
+            } if (isPrimaryFalse) {
+                accountContacts.addAll(getSpecificAccountContacts(false));
+            }
         }
         delete accountContacts;
         return accountContacts.size();
