@@ -1,0 +1,12 @@
+<!--
+ - Created by Igor Litvinyuk on 17.12.2018.
+ -->
+
+<aura:component controller="SampleLookupController">
+    <aura:attribute name="selection" type="List" default="[]"/>
+
+    <div class="slds-form slds-form_stacked slds-m-around_xx-large">
+        <c:Lookup aura:id="lookup" selection="{!v.selection}" onSearch="{!c.lookupSearch}" placeholder="Search..." isMultiEntry="true"/>
+        <lightning:button variant="brand" label="Submit" onclick="{!c.onSubmit}"/>
+    </div>
+</aura:component>

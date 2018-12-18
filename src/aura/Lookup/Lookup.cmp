@@ -1,0 +1,87 @@
+<!--
+ - Created by Igor Litvinyuk on 17.12.2018.
+ -->
+
+<aura:component implements="flexipage:availableForAllPageTypes">
+    <aura:attribute name="selection" type="List" required="true"/>
+    <aura:attribute name="placeholder" type="String" default=""/>
+    <aura:attribute name="isMultiEntry" type="Boolean" default="false"/>
+    <aura:attribute name="scrollAfterNItems" type="Integer" default="5"/>
+    <aura:attribute name="searchTerm" type="String" default=""/>
+    <aura:attribute name="searchResults" type="List" default="[]"/>
+    <aura:attribute name="blurTimeout" type="Map"/>
+    <aura:attribute name="hasFocus" type="Boolean" default="false"/>
+    <aura:attribute name="searchThrottlingTimeout" type="Map"/>
+
+    <aura:registerEvent name="onSearch" type="c:LookupSearchEvent"/>
+    <aura:registerEvent name="onSelection" type="c:LookupSelectionEvent"/>
+
+    <aura:method name="search" action="{!c.search}">
+        <aura:attribute name="serverAction" type="Aura.Action" required="true"/>
+    </aura:method>
+
+    <div class="slds-form-element">
+        <label class="slds-form-element__label" for="{# globalId + '_combobox' }">Search</label>
+        <div class="slds-form-element__control">
+            <div class="slds-combobox_container">
+                <div class="{!'slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click '+ (and(v.hasFocus, !empty(v.searchResults)) ? 'slds-is-open' : 'slds-combobox-lookup')}"
+                     aria-expanded="{!!empty(v.searchResults)}" aria-haspopup="listbox" role="combobox">
+                    <aura:if isTrue="{!v.isMultiEntry}">
+                        <!-- Multi-entry combobox start -->
+                        <div class="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right" role="none">
+                            <input type="text" class="{!'slds-input slds-combobox__input has-custom-height'}"
+                                   aria-autocomplete="list" aria-controls="{# globalId + '_listbox' }" autocomplete="off"
+                                   role="textbox" id="{# globalId + '_combobox' }" aura:id="searchInput" placeholder="{!v.placeholder}"
+                                   value="" onfocus="{!c.onFocus}" onblur="{!c.onBlur}" oninput="{!c.onInput}" />
+                            <!-- search icon and spinner -->
+                            <div aura:id="spinner" role="presentation" class="slds-hide slds-input__icon slds-input__icon_right slds-is-relative">
+                                <div role="status" class="slds-spinner slds-spinner_xx-small slds-spinner_delayed">
+                                    <span class="slds-assistive-text">Loading</span>
+                                    <div class="slds-spinner__dot-a"></div>
+                                    <div class="slds-spinner__dot-b"></div>
+                                </div>
+                            </div>
+                            <lightning:icon aura:id="search-icon" iconName="utility:search" size="x-small" alternativeText="Search icon" class="slds-input__icon slds-input__icon_right"/>
+                        </div>
+                        <!-- Multi-entry combobox end -->
+                    </aura:if>
+                    <!-- List box start -->
+                    <div id="{# globalId + '_listbox' }" role="listbox" onclick="{!c.onComboboxClick}">
+                        <ul class="{!'slds-listbox slds-listbox_vertical slds-dropdown slds-dropdown_fluid ' + (v.scrollAfterNItems ? 'slds-dropdown_length-with-icon-' + v.scrollAfterNItems : '')}" role="presentation">
+                            <aura:iteration items="{!v.searchResults}" var="result">
+                                <li role="presentation" class="slds-listbox__item">
+                                    <span id="{!result.id}" class="slds-media slds-listbox__option slds-listbox__option_entity slds-listbox__option_has-meta" role="option" onclick="{!c.onResultClick}">
+                                        <span class="slds-media__figure">
+                                            <lightning:icon iconName="{!empty(result.icon) ? 'standard:default' : result.icon}" size="small"/>
+                                        </span>
+                                        <span class="slds-media__body">
+                                            <span class="slds-listbox__option-text slds-listbox__option-text_entity">{!result.title}</span>
+                                        </span>
+                                    </span>
+                                </li>
+                            </aura:iteration>
+                        </ul>
+                    </div>
+                    <!-- List box end -->
+                </div>
+            </div>
+            <!-- Multi-selection start -->
+            <aura:if isTrue="{!v.isMultiEntry}">
+                <div id="{# globalId + '_selection' }" role="listbox" aria-orientation="horizontal">
+                    <ul class="slds-listbox slds-listbox_inline slds-p-top_xxx-small" role="group" aria-label="Selected Options:">
+                        <aura:iteration items="{!v.selection}" var="item">
+                            <li role="presentation" class="slds-listbox__item">
+                                <lightning:pill label="{!item.title}" onremove="{!c.onRemoveSelectedItem}" name="{!item.id}">
+                                    <aura:set attribute="media">
+                                        <lightning:icon iconName="{!empty(item.icon) ? 'standard:default' : item.icon}"/>
+                                    </aura:set>
+                                </lightning:pill>
+                            </li>
+                        </aura:iteration>
+                    </ul>
+                </div>
+            </aura:if>
+            <!-- Multi-selection end -->
+        </div>
+    </div>
+</aura:component>
