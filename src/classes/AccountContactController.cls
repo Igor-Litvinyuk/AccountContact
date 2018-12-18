@@ -15,6 +15,7 @@ public class AccountContactController {
                         , Active_Days__c
                         , CreatedDate
                 FROM AccountContact__c
+                ORDER BY CreatedDate
         ];
     }
 

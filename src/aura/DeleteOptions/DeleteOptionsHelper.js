@@ -8,8 +8,8 @@
             function (content, status) {
                 if (status === "SUCCESS") {
                     modalBody = content;
-                    component.find('overlayLib').showCustomModal({
-                        header: "Delete Options",
+                    component.find("overlayLib").showCustomModal({
+                        header: 'Delete Options',
                         body: modalBody,
                         showCloseButton: true
                     })

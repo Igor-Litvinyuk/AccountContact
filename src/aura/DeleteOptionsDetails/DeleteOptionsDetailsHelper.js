@@ -3,14 +3,11 @@
  */
 ({
     deleteAccountContacts: function (component) {
-        let isPrimaryTrue = component.get("v.isPrimaryTrue");
-        let isPrimaryFalse = component.get("v.isPrimaryFalse");
-        let all = component.get("v.all");
         let action = component.get("c.deleteSpecificAccountContacts");
         action.setParams({
-            "isPrimaryTrue": isPrimaryTrue,
-            "isPrimaryFalse": isPrimaryFalse,
-            "all": all
+            isPrimaryTrue: component.get("v.isPrimaryTrue"),
+            isPrimaryFalse: component.get("v.isPrimaryFalse"),
+            all: component.get("v.all")
         });
         action.setCallback(this, function (response) {
             let state = response.getState();
@@ -18,7 +15,7 @@
                 let count = response.getReturnValue();
                 if (count !== 0) {
                     this.showInfoMessage(component, count + " AccountContacts deleted!");
-                    $A.get('e.force:refreshView').fire();
+                    $A.get("e.force:refreshView").fire();
                 } else {
                     this.showWarningMessage(component, " No data to delete!");
                 }
@@ -31,18 +28,18 @@
     },
 
     showInfoMessage: function (component, message) {
-        component.find('notifyLib').showNotice({
-            "variant": "info",
-            "header": "Success!",
-            "message": message
+        component.find("notifyLib").showNotice({
+            variant: 'info',
+            header: 'Success!',
+            message: message
         });
     },
 
     showWarningMessage: function (component, message) {
-        component.find('notifyLib').showNotice({
-            "variant": "warning",
-            "header": "Warning!",
-            "message": message
+        component.find("notifyLib").showNotice({
+            variant: 'warning',
+            header: 'Warning!',
+            message: message
         });
     }
 });
