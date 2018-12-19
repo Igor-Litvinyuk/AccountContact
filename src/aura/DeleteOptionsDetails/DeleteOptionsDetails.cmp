@@ -10,14 +10,10 @@
     <aura:attribute name='all' type='Boolean' default="false"/>
 
     <c:SampleLookupContainer/>
-    <div style="padding-left: 42px">
-        <lightning:input type="checkbox" label="isPrimary - True" checked="{!v.isPrimaryTrue}"/><br/>
-        <lightning:input type="checkbox" label="isPrimary - False" checked="{!v.isPrimaryFalse}"/><br/>
-        <lightning:input type="checkbox" label="All" checked="{!v.all}"/>
-    </div>
-    <div style="text-align:center; padding-bottom: 20px">
-        <lightning:button variant="brand" label="Delete" title="Delete action" onclick="{!c.onDelete}"/>
-    </div>
+        <lightning:input class="slds-p-bottom--small slds-p-left--xx-large" type="checkbox" label="isPrimary - True" checked="{!v.isPrimaryTrue}"/>
+        <lightning:input class="slds-p-bottom--small slds-p-left--xx-large" type="checkbox" label="isPrimary - False" checked="{!v.isPrimaryFalse}"/>
+        <lightning:input class="slds-p-bottom--small slds-p-left--xx-large" type="checkbox" label="All" checked="{!v.all}"/>
+        <lightning:button class="slds-align--absolute-center slds-m-bottom--medium" variant="brand" label="Delete" title="Delete action" onclick="{!c.onDelete}"/>
 </aura:component>
 
 
