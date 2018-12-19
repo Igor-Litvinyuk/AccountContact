@@ -30,7 +30,7 @@
                     <aura:if isTrue="{!and(v.isMultiEntry, not(v.isButtonDisabled))}">
                         <!-- Multi-entry combobox start -->
                         <div class="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right" role="none">
-                            <input type="text" class="{!'slds-input slds-combobox__input has-custom-height'}"
+                            <input type="text" class="slds-input slds-combobox__input has-custom-height"
                                    aria-autocomplete="list" aria-controls="{# globalId + '_listbox' }" autocomplete="off"
                                    role="textbox" id="{# globalId + '_combobox' }" aura:id="searchInput" placeholder="{!v.placeholder}"
                                    value="" onfocus="{!c.onFocus}" onblur="{!c.onBlur}" oninput="{!c.onInput}" />

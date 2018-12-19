@@ -51,7 +51,7 @@
         if (!helper.isSelectionAllowed(component)) {
             return;
         }
-        const newSearchTerm = event.target.value;
+        let newSearchTerm = event.target.value;
         helper.updateSearchTerm(component, newSearchTerm);
     },
 
