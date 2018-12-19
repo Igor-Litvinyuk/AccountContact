@@ -3,6 +3,8 @@
  */
 ({
     onDelete: function (component, event, helper) {
-       helper.deleteAccountContacts(component);
+        if (confirm("Are you sure?")){
+            helper.deleteAccountContacts(component);
+        }
     }
 });

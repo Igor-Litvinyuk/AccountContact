@@ -12,6 +12,7 @@
     <aura:attribute name="blurTimeout" type="Map"/>
     <aura:attribute name="hasFocus" type="Boolean" default="false"/>
     <aura:attribute name="searchThrottlingTimeout" type="Map"/>
+    <aura:attribute name="isButtonDisabled" type="Boolean" default="false"/>
 
     <aura:registerEvent name="onSearch" type="c:LookupSearchEvent"/>
     <aura:registerEvent name="onSelection" type="c:LookupSelectionEvent"/>
@@ -26,7 +27,7 @@
             <div class="slds-combobox_container">
                 <div class="{!'slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click '+ (and(v.hasFocus, !empty(v.searchResults)) ? 'slds-is-open' : 'slds-combobox-lookup')}"
                      aria-expanded="{!!empty(v.searchResults)}" aria-haspopup="listbox" role="combobox">
-                    <aura:if isTrue="{!v.isMultiEntry}">
+                    <aura:if isTrue="{!and(v.isMultiEntry, not(v.isButtonDisabled))}">
                         <!-- Multi-entry combobox start -->
                         <div class="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right" role="none">
                             <input type="text" class="{!'slds-input slds-combobox__input has-custom-height'}"

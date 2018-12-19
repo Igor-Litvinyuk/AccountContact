@@ -70,8 +70,10 @@
     },
 
     removeSelectedItem: function (component, removedItemId) {
-        let selection = component.get("v.selection");
-        let updatedSelection = selection.filter(item => item.id !== removedItemId);
-        component.set("v.selection", updatedSelection);
+        if (!component.get("v.isButtonDisabled")){
+            let selection = component.get("v.selection");
+            let updatedSelection = selection.filter(item => item.id !== removedItemId);
+            component.set("v.selection", updatedSelection);
+        }
     }
 });

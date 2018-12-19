@@ -9,6 +9,8 @@
     },
 
     onSubmit: function (component, event, helper) {
-
+        if (component.get("v.selection").length) {
+            component.set("v.isButtonDisabled", true);
+        }
     }
 });
