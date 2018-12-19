@@ -5,6 +5,7 @@
 <aura:component controller="SampleLookupController">
     <aura:attribute name="selection" type="List" default="[]"/>
     <aura:attribute name="isButtonDisabled" type="Boolean" default="false"/>
+    <aura:registerEvent name="submitButton" type="c:SubmitButton"/>
 
     <div class="slds-form slds-form_stacked slds-m-around_xx-large">
         <c:Lookup aura:id="lookup" selection="{!v.selection}" onSearch="{!c.lookupSearch}" placeholder="Search..." isMultiEntry="true" isButtonDisabled="{!v.isButtonDisabled}"/>

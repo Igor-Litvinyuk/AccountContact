@@ -1,0 +1,7 @@
+<!--
+ - Created by Igor Litvinyuk on 19.12.2018.
+ -->
+
+<aura:event type="COMPONENT">
+    <aura:attribute name="sObjects" type="List"/>
+</aura:event>

@@ -7,7 +7,8 @@
         action.setParams({
             isPrimaryTrue: component.get("v.isPrimaryTrue"),
             isPrimaryFalse: component.get("v.isPrimaryFalse"),
-            all: component.get("v.all")
+            all: component.get("v.all"),
+            ids: this.getSObjectsIds(component)
         });
         action.setCallback(this, function (response) {
             let state = response.getState();
@@ -41,5 +42,10 @@
             header: 'Warning!',
             message: message
         });
-    }
+    },
+
+    getSObjectsIds: function (component) {
+        let selection = component.get("v.sObjects");
+        return selection.map(element => element.id);
+    },
 });

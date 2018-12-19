@@ -20,8 +20,8 @@ public class AccountContactController {
     }
 
     @AuraEnabled
-    public static Integer deleteSpecificAccountContacts(Boolean isPrimaryTrue, Boolean isPrimaryFalse, Boolean all) {
-        List<AccountContact__c> accountContacts = new List<AccountContact__c>();
+    public static Integer deleteSpecificAccountContacts(Boolean isPrimaryTrue, Boolean isPrimaryFalse, Boolean all, Id[] ids) {
+        Set<AccountContact__c> accountContacts = new Set<AccountContact__c>();
         if (all) {
             accountContacts.addAll(getAllAccountContacts());
         } else {
@@ -29,17 +29,25 @@ public class AccountContactController {
                 accountContacts.addAll(getSpecificAccountContacts(true));
             } if (isPrimaryFalse) {
                 accountContacts.addAll(getSpecificAccountContacts(false));
+            } if (!ids.isEmpty()) {
+                accountContacts.addAll(getSpecificAccountContacts('Account__c', ids));
+                accountContacts.addAll(getSpecificAccountContacts('Contact__c', ids));
             }
         }
-        delete accountContacts;
-        return accountContacts.size();
+        List<AccountContact__c> accountContactsForDelete = new List<AccountContact__c>(accountContacts);
+        delete accountContactsForDelete;
+        return accountContactsForDelete.size();
     }
 
-    public static List<AccountContact__c> getSpecificAccountContacts(Boolean isPrimary) {
+    private static List<AccountContact__c> getSpecificAccountContacts(Boolean isPrimary) {
         return [
                 SELECT Id
                 FROM AccountContact__c
                 WHERE isPrimary__c = :isPrimary
         ];
+    }
+
+    private static List<AccountContact__c> getSpecificAccountContacts(String sObjectType, Id[] ids) {
+        return Database.query('SELECT Id FROM AccountContact__c WHERE ' +  sObjectType + ' IN :ids');
     }
 }

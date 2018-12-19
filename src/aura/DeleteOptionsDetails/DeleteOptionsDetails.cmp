@@ -8,6 +8,8 @@
     <aura:attribute name='isPrimaryTrue' type='Boolean' default="false"/>
     <aura:attribute name='isPrimaryFalse' type='Boolean' default="false"/>
     <aura:attribute name='all' type='Boolean' default="false"/>
+    <aura:attribute name="sObjects" type="List"/>
+    <aura:handler name="submitButton" event="c:SubmitButton" action="{!c.handleSubmitButtonEvent}"/>
 
     <c:SampleLookupContainer/>
         <lightning:input class="slds-p-bottom--small slds-p-left--xx-large" type="checkbox" label="isPrimary - True" checked="{!v.isPrimaryTrue}"/>
