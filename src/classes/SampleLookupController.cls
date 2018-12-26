@@ -28,7 +28,7 @@ public with sharing class SampleLookupController {
         }
         Contact [] contacts = ((List<Contact>) searchResults[1]);
         for (Contact contact : contacts) {
-            results.add(new LookupSearchResult(contact.Id, 'Contact', 'standard:account', contact.FirstName + ' ' + contact.LastName));
+            results.add(new LookupSearchResult(contact.Id, 'Contact', 'standard:contact', contact.FirstName + ' ' + contact.LastName));
         }
         return results;
     }

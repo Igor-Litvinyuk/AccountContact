@@ -55,7 +55,7 @@
                                         <span class="slds-media__figure">
                                             <lightning:icon iconName="{!empty(result.icon) ? 'standard:default' : result.icon}" size="small"/>
                                         </span>
-                                        <span class="slds-media__body">
+                                        <span class="slds-media__figure">
                                             <span class="slds-listbox__option-text slds-listbox__option-text_entity">{!result.title}</span>
                                         </span>
                                     </span>
