@@ -12,10 +12,11 @@
     <aura:handler name="submitButton" event="c:SubmitButton" action="{!c.handleSubmitButtonEvent}"/>
 
     <c:SampleLookupContainer/>
-        <lightning:input class="slds-p-bottom--small slds-p-left--xx-large" type="checkbox" label="isPrimary - True" checked="{!v.isPrimaryTrue}"/>
-        <lightning:input class="slds-p-bottom--small slds-p-left--xx-large" type="checkbox" label="isPrimary - False" checked="{!v.isPrimaryFalse}"/>
-        <lightning:input class="slds-p-bottom--small slds-p-left--xx-large" type="checkbox" label="All" checked="{!v.all}"/>
-        <lightning:button class="slds-align--absolute-center slds-m-bottom--medium" variant="brand" label="Delete" title="Delete action" onclick="{!c.onDelete}"/>
+    <lightning:input class="slds-p-bottom--small slds-p-left--xx-large" type="checkbox" label="isPrimary - True" checked="{!v.isPrimaryTrue}"/>
+    <lightning:input class="slds-p-bottom--small slds-p-left--xx-large" type="checkbox" label="isPrimary - False" checked="{!v.isPrimaryFalse}"/>
+    <lightning:input class="slds-p-bottom--small slds-p-left--xx-large" type="checkbox" label="All" checked="{!v.all}"/>
+    <lightning:button class="slds-align--absolute-center slds-m-bottom--medium" variant="brand" label="Delete" title="Delete action" onclick="{!c.onDelete}"/>
+    <lightning:helptext content="Advanced settings for deleting AccountContacts records"/>
 </aura:component>
 
 
