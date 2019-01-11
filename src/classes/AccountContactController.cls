@@ -39,7 +39,8 @@ public class AccountContactController {
         return accountContactsForDelete.size();
     }
 
-    private static List<AccountContact__c> getSpecificAccountContacts(Boolean isPrimary) {
+    @AuraEnabled
+    public static List<AccountContact__c> getSpecificAccountContacts(Boolean isPrimary) {
         return [
                 SELECT Id
                 FROM AccountContact__c
@@ -47,7 +48,8 @@ public class AccountContactController {
         ];
     }
 
-    private static List<AccountContact__c> getSpecificAccountContacts(String sObjectType, Id[] ids) {
+    @AuraEnabled
+    public static List<AccountContact__c> getSpecificAccountContacts(String sObjectType, Id[] ids) {
         return Database.query('SELECT Id FROM AccountContact__c WHERE ' +  sObjectType + ' IN :ids');
     }
 }
