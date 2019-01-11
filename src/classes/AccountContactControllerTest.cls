@@ -28,7 +28,7 @@ private class AccountContactControllerTest {
         List<AccountContact__c> accountContacts = TestDataFactory.constructAccountContacts(200, true);
         insert accountContacts;
         Test.startTest();
-        Integer count = AccountContactController.deleteSpecificAccountContacts(true, true, false);
+        Integer count = AccountContactController.deleteSpecificAccountContacts(true, true, false, null);
         Test.stopTest();
         Integer verifyAccountContacts = [SELECT COUNT() FROM AccountContact__c];
         System.assertEquals(count, accountContacts.size());
@@ -40,21 +40,10 @@ private class AccountContactControllerTest {
         List<AccountContact__c> accountContacts = TestDataFactory.constructAccountContacts(200, true);
         insert accountContacts;
         Test.startTest();
-        Integer count = AccountContactController.deleteSpecificAccountContacts(false, false, true);
+        Integer count = AccountContactController.deleteSpecificAccountContacts(false, false, true, null);
         Test.stopTest();
         Integer verifyAccountContacts = [SELECT COUNT() FROM AccountContact__c];
         System.assertEquals(count, accountContacts.size());
-        System.assertEquals(0, verifyAccountContacts);
-    }
-
-    @isTest
-    static void testGetSpecificAccountContacts() {
-        List<AccountContact__c> accountContacts = TestDataFactory.constructAccountContacts(200, true);
-        insert accountContacts;
-        Test.startTest();
-        List<AccountContact__c> accountContactsList = AccountContactController.getSpecificAccountContacts(false);
-        Test.stopTest();
-        Integer verifyAccountContacts = [SELECT COUNT() FROM AccountContact__c WHERE isPrimary__c = FALSE];
         System.assertEquals(0, verifyAccountContacts);
     }
 }

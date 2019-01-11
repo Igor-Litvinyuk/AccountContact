@@ -1,0 +1,8 @@
+<!--
+ - Created by Igor Litvinyuk on 11.01.2019.
+ -->
+
+<design:component>
+    <design:attribute name="quickAction" label="Quick Action" description="Format: 'Object API name'.'Quick Action Name'"/>
+    <design:attribute name="paramValue" label="URL Param Value"/>
+</design:component>

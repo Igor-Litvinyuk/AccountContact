@@ -18,5 +18,3 @@
     <lightning:button class="slds-align--absolute-center slds-m-bottom--medium" variant="brand" label="Delete" title="Delete action" onclick="{!c.onDelete}"/>
     <lightning:helptext content="Advanced settings for deleting AccountContacts records"/>
 </aura:component>
-
-

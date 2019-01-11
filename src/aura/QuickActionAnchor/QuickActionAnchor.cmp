@@ -1,0 +1,12 @@
+<!--
+ - Created by Igor Litvinyuk on 11.01.2019.
+ -->
+
+<aura:component implements="flexipage:availableForRecordHome">
+    <aura:handler name="init" action="{!c.doInit}" value="{!this}"/>
+    <aura:attribute name="paramName" type="String" default="action"/>
+    <aura:attribute name="paramValue" type="String" required="true"/>
+    <aura:attribute name="quickAction" type="String" required="true"/>
+    <lightning:quickActionAPI aura:id="quickActionAPI"/>
+    <lightning:notificationsLibrary aura:id="notifLib"/>
+</aura:component>

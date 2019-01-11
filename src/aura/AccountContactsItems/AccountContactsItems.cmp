@@ -6,6 +6,7 @@
     <aura:handler name="init" action="{!c.doInit}" value="{!this}"/>
     <aura:attribute name="accountContacts" type="AccountContact__c[]"/>
     <aura:attribute name="path" type="String" default="/one/one.app?#/sObject/"/>
+    <lightning:navigation aura:id="navService"/>
 
     <table class="slds-table slds-table_bordered slds-table_cell-buffer">
         <thead>
@@ -16,6 +17,7 @@
             <th scope="col">isPrimary</th>
             <th scope="col">Active Days</th>
             <th scope="col">Created Date</th>
+            <th scope="col">Quick Action</th>
         </tr>
         </thead>
         <tbody>
@@ -31,6 +33,7 @@
                                                  day="numeric" hour="2-digit"
                                                  minute="2-digit" second="2-digit" timeZoneName="short" hour12="true"/>
                 </td>
+                <td><button type="button" onclick="{!c.onSendEmail}" id="{!accountContact.Id}">Send Email</button></td>
             </tr>
         </aura:iteration>
         </tbody>
