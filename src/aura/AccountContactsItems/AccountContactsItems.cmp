@@ -33,7 +33,7 @@
                                                  day="numeric" hour="2-digit"
                                                  minute="2-digit" second="2-digit" timeZoneName="short" hour12="true"/>
                 </td>
-                <td><button type="button" onclick="{!c.onSendEmail}" id="{!accountContact.Id}">Send Email</button></td>
+                <td><button type="button" onclick="{!c.onSendEmail}" id="{!accountContact.Id}">Send Email <em style="font-size: 15px">&#x2709;</em></button></td>
             </tr>
         </aura:iteration>
         </tbody>

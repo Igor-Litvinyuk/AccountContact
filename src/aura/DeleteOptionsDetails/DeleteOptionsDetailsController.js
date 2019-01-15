@@ -8,7 +8,7 @@
     },
 
     onDelete: function (component, event, helper) {
-        if (confirm("Are you sure?")) {
+        if (confirm("Are you sure? " + String.fromCodePoint(0x1F628))) {
             helper.deleteAccountContacts(component);
         }
     }
